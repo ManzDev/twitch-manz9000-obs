@@ -34,8 +34,8 @@ class Manz9000Bot extends HTMLElement {
   static get styles() {
     return /* css */`
       :host {
-        --bot-width: 300px;
-        --bot-height: 300px;
+        --bot-width: 350px;
+        --bot-height: 350px;
         --fancy-gradient: linear-gradient(to top, #884ced, #ec1cce);
       }
 

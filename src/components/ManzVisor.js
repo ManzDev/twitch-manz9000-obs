@@ -1,5 +1,3 @@
-import "./ManzEye.js";
-
 class ManzVisor extends HTMLElement {
   constructor() {
     super();
@@ -9,7 +7,7 @@ class ManzVisor extends HTMLElement {
   static get styles() {
     return /* css */`
       :host {
-        --size: calc(var(--bot-width) / 2.15);
+        --size: calc(var(--bot-width) / 1.75);
 
         position: relative;
         z-index: 5;
@@ -33,8 +31,16 @@ class ManzVisor extends HTMLElement {
         height: calc(var(--size) * var(--factor));
         background: #505050;
         background-image:
-          radial-gradient(#505050 0 50%, transparent 50% 67%, #505050 67% 100%),
-          repeating-conic-gradient(#919191 0 0.5%, transparent 1% 2%, #919191 2% 2.5%);
+          radial-gradient(
+            #505050 0 50%,
+            transparent 50% 67%,
+            #505050 67% 100%
+          ),
+          repeating-conic-gradient(
+            #919191 0 1%,
+            transparent 1.25% 1.75%,
+            #919191 2% 2.5%
+          );
         border-radius: 50%;
 
         display: grid;
@@ -61,7 +67,7 @@ class ManzVisor extends HTMLElement {
     <style>${ManzVisor.styles}</style>
     <div class="container">
       <div class="visor">
-        <manz-eye></manz-eye>
+
       </div>
     </div>`;
   }

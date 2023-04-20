@@ -14,14 +14,16 @@ class ManzFlap extends HTMLElement {
 
       :host(.left) {
         left: 0;
-        translate: -30px;
+        translate: -35px;
         rotate: -90deg;
       }
+
       :host(.right) {
         right: 0;
         rotate: 90deg;
-        translate: 30px;
+        translate: 35px;
       }
+
       :host(.bottom) {
         bottom: 0;
         rotate: 180deg;
@@ -41,7 +43,7 @@ class ManzFlap extends HTMLElement {
 
       .flap {
         width: 85px;
-        height: 25px;
+        height: 15px;
         background: var(--fancy-gradient);
         clip-path: polygon(0 0, 100% 0, 75% 100%, 25% 100%);
         box-shadow: 0 10px 5px 5px #0003 inset;

@@ -10,7 +10,7 @@ class ManzEye extends HTMLElement {
       }
 
       .screen {
-        --factor: 1.75;
+        --factor: 2.25;
 
         width: calc(var(--size) / var(--factor));
         height: calc(var(--size) / var(--factor));
@@ -30,14 +30,25 @@ class ManzEye extends HTMLElement {
         border-radius: 50%;
       }
 
+      /*
       .eye {
         background-image: repeating-conic-gradient(gold 0 5%, transparent 5% 8%);
         filter: drop-shadow(0 0 10px #e4c410cc);
       }
+      */
 
+      /*
       .eye {
         background-image: radial-gradient(black 0 5%, red 14% 35%, black 75% 100%);
         filter: drop-shadow(0 0 10px darkred);
+      }
+      */
+
+      .eye {
+        background-image: radial-gradient(#500 0 20%, red 35% 60%, black 75% 100%);
+        filter:
+        drop-shadow(0 0 10px darkred)
+        drop-shadow(0 0 10px darkred);
       }
     `;
   }

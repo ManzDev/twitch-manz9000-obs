@@ -1,4 +1,5 @@
 import "./ManzVisor.js";
+import "./ManzEye.js";
 
 class ManzPanel extends HTMLElement {
   constructor() {
@@ -9,7 +10,7 @@ class ManzPanel extends HTMLElement {
   static get styles() {
     return /* css */`
       :host {
-        --size: calc(var(--bot-width) / 1.45);
+        --size: calc(var(--bot-width) / 1.25);
         --border-color: #888;
       }
 
@@ -44,6 +45,14 @@ class ManzPanel extends HTMLElement {
         width: 100%;
         height: 2px;
       }
+
+      :is(manz-visor, manz-eye) {
+        position: absolute;
+      }
+
+      manz-eye {
+        z-index: 5;
+      }
     `;
   }
 
@@ -56,6 +65,7 @@ class ManzPanel extends HTMLElement {
     <style>${ManzPanel.styles}</style>
     <div class="circle">
       <manz-visor></manz-visor>
+      <manz-eye></manz-eye>
     </div>`;
   }
 }
