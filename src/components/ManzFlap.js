@@ -14,19 +14,17 @@ class ManzFlap extends HTMLElement {
 
       :host(.left) {
         left: 0;
-        translate: -35px;
-        rotate: -90deg;
+        transform: translateX(-35px) rotate(-90deg);
       }
 
       :host(.right) {
         right: 0;
-        rotate: 90deg;
-        translate: 35px;
+        transform: translateX(35px) rotate(90deg);
       }
 
       :host(.bottom) {
         bottom: 0;
-        rotate: 180deg;
+        transform: rotate(180deg);
       }
 
       .container {

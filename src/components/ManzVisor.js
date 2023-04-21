@@ -7,7 +7,7 @@ class ManzVisor extends HTMLElement {
   static get styles() {
     return /* css */`
       :host {
-        --size: calc(var(--bot-width) / 1.75);
+        --size: var(--visor-size);
 
         position: relative;
         z-index: 5;

@@ -25,7 +25,7 @@ class Manz9000Bot extends HTMLElement {
       const messageElement = dialog.querySelector(".message");
       setTypewriter(message, messageElement);
       // dialog.querySelector(".message").textContent = message;
-      console.log(type);
+      this.setPersonality(type);
       dialogContainer.innerHTML = "";
       dialogContainer.appendChild(dialog);
     });
@@ -36,6 +36,10 @@ class Manz9000Bot extends HTMLElement {
       :host {
         --bot-width: 350px;
         --bot-height: 350px;
+
+        --panel-size: calc(var(--bot-width) / 1.25);
+        --visor-size: calc(var(--bot-width) / 1.75);
+
         --fancy-gradient: linear-gradient(to top, #884ced, #ec1cce);
       }
 
@@ -134,6 +138,11 @@ class Manz9000Bot extends HTMLElement {
   connectedCallback() {
     this.render();
     this.init();
+  }
+
+  setPersonality(type) {
+    const event = new CustomEvent("SET_PERSONALITY", { detail: { type }, composed: true, bubbles: true });
+    this.dispatchEvent(event);
   }
 
   render() {

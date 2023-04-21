@@ -1,3 +1,4 @@
+import "./ManzDisplay.js";
 import "./ManzVisor.js";
 import "./ManzEye.js";
 
@@ -10,7 +11,7 @@ class ManzPanel extends HTMLElement {
   static get styles() {
     return /* css */`
       :host {
-        --size: calc(var(--bot-width) / 1.25);
+        --size: var(--panel-size);
         --border-color: #888;
       }
 
@@ -53,6 +54,58 @@ class ManzPanel extends HTMLElement {
       manz-eye {
         z-index: 5;
       }
+
+      .screw {
+        --size: 10px;
+        --border-color: #4a4a4a;
+
+        width: var(--size);
+        height: var(--size);
+        background: grey;
+        border: 1px solid var(--border-color);
+        border-radius: 50%;
+        z-index: 5;
+
+        position: absolute;
+        display: grid;
+        place-items: center;
+      }
+
+      .screw::before,
+      .screw::after {
+        content: "";
+        display: inline-block;
+        background: var(--border-color);
+        width: 70%;
+        height: 15%;
+        position: absolute;
+      }
+
+      .screw::after {
+        width: 15%;
+        height: 70%;
+      }
+
+      .screw-1 {
+        bottom: 12px;
+        transform: translateX(-12px);
+      }
+
+      .screw-2 {
+        left: 12px;
+        transform: translateY(12px);
+      }
+
+      .screw-3 {
+        right: 12px;
+        transform: translateY(-12px);
+      }
+
+      .screw-4 {
+        top: 12px;
+        transform: translateX(12px);
+      }
+
     `;
   }
 
@@ -64,8 +117,13 @@ class ManzPanel extends HTMLElement {
     this.shadowRoot.innerHTML = /* html */`
     <style>${ManzPanel.styles}</style>
     <div class="circle">
+      <manz-display></manz-display>
       <manz-visor></manz-visor>
       <manz-eye></manz-eye>
+      <div class="screw screw-1"></div>
+      <div class="screw screw-2"></div>
+      <div class="screw screw-3"></div>
+      <div class="screw screw-4"></div>
     </div>`;
   }
 }
