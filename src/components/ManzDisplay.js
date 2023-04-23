@@ -10,12 +10,6 @@ class ManzDisplay extends HTMLElement {
         --size: var(--panel-size);
       }
 
-      .container {
-        width: var(--size);
-        height: var(--size);
-        background: gold;
-      }
-
       svg {
         width: calc(var(--size) / 2);
         height: calc(var(--size) / 2);
@@ -27,6 +21,7 @@ class ManzDisplay extends HTMLElement {
         font-family: EnterCommand, monospace;
         font-size: 3rem;
         letter-spacing: 6px;
+        user-select: none;
       }
     `;
   }

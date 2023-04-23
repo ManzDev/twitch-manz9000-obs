@@ -1,3 +1,24 @@
+@font-face {
+  font-family: Rektec;
+  src: url("fonts/rektec.woff2") format("woff2"),
+    url("fonts/rektec.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: EnterCommand;
+  src: url("fonts/entercommand.woff2") format("woff2"),
+    url("fonts/entercommand.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Capsule3";
+  src: url("fonts/capsule3.woff2") format("woff2"),
+    url("fonts/capsule3.woff") format("woff");
+  font-display: swap;
+}
+
 body {
   background: #223;
 }

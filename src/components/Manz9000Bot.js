@@ -4,9 +4,16 @@ import "./ManzPanel.js";
 
 const template = document.createElement("template");
 template.innerHTML = /* html */`
-  <div class="dialog">
-    <p class="reply">En respuesta a <span></span>:</p>
-    <p class="message"></p>
+  <div class="chat">
+    <div class="username dialog">
+      <img class="avatar" src="" alt="">
+      <p class="name"></p>
+      <p class="message"></p>
+    </div>
+    <div class="bot dialog">
+      <p class="reply">En respuesta a <span></span>:</p>
+      <p class="message"></p>
+    </div>
   </div>`;
 
 class Manz9000Bot extends HTMLElement {
@@ -18,12 +25,16 @@ class Manz9000Bot extends HTMLElement {
   init() {
     const dialogContainer = this.shadowRoot.querySelector(".dialog-container");
     const socket = new WebSocket("ws://localhost:9000");
-    socket.addEventListener("message", (ev) => {
+    socket.addEventListener("message", async (ev) => {
       const dialog = template.content.cloneNode((true));
-      const { type, message, username } = JSON.parse(ev.data);
+      const { type, message, username, usernameMessage, evil } = JSON.parse(ev.data);
+
+      const event = new CustomEvent("SET_EVIL", { composed: true, bubbles: true, detail: { evil } });
+      this.dispatchEvent(event);
+
       dialog.querySelector(".reply span").textContent = username;
-      const messageElement = dialog.querySelector(".message");
-      setTypewriter(message, messageElement);
+      const chatElement = dialog.querySelector(".chat");
+      setTypewriter({ username, usernameMessage, message }, chatElement);
       // dialog.querySelector(".message").textContent = message;
       this.setPersonality(type);
       dialogContainer.innerHTML = "";
@@ -109,7 +120,6 @@ class Manz9000Bot extends HTMLElement {
 
       .dialog {
         display: inline-block;
-        width: 80%;
         background: #fff;
         color: #000;
         font-family: EnterCommand;
@@ -130,6 +140,34 @@ class Manz9000Bot extends HTMLElement {
 
       .dialog .reply span {
         color: #731ecf;
+      }
+
+      .chat {
+        max-width: 1180px;
+        display: grid;
+        gap: 20px;
+      }
+
+      .dialog.username {
+        max-width: 600px;
+        font-size: 32px;
+        justify-self: end;
+        background: #c1aee2;
+        position: relative;
+      }
+
+      .dialog.username .name {
+        color: #d3002e;
+        font-size: 37px;
+      }
+
+      .dialog.username .avatar {
+        position: absolute;
+        left: -70px;
+        border: 8px solid #c1aee2;
+        background: #c1aee2;
+        border-radius: 50%;
+        box-shadow: 4px 4px 5px #0005;
       }
 
     `;

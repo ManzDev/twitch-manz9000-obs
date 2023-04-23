@@ -1,6 +1,7 @@
 import "./ManzDisplay.js";
 import "./ManzVisor.js";
 import "./ManzEye.js";
+import "./ManzMeter.js";
 
 class ManzPanel extends HTMLElement {
   constructor() {
@@ -22,7 +23,7 @@ class ManzPanel extends HTMLElement {
           transparent 0 0.25turn,
           #000 0.25turn 0.50turn,
           transparent 0.50turn 0.75turn,
-          #3d3d3d 0.75turn 1turn
+          #000 0.75turn 1turn
         );
         border-radius: 50%;
         border: 2px solid var(--border-color);
@@ -117,6 +118,7 @@ class ManzPanel extends HTMLElement {
     this.shadowRoot.innerHTML = /* html */`
     <style>${ManzPanel.styles}</style>
     <div class="circle">
+      <manz-meter></manz-meter>
       <manz-display></manz-display>
       <manz-visor></manz-visor>
       <manz-eye></manz-eye>
